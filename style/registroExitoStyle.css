@@ -1,0 +1,19 @@
+#tituloRegistroExitoso {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#tituloRegistroExitoso h1 {
+  background-color: #000000;
+  color: #FFFFFF;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#tituloRegistroExitoso div {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  font-size: 25px;
+  text-align: center;
+}

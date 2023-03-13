@@ -224,4 +224,18 @@ function validar() {
         "contrasena": contrasena
     }
     document.cookie = correo + "=" + JSON.stringify(usuario);
+
+    //GUARDAMOS LOS DATOS EN LA sessionstorage
+
+    sessionStorage.setItem('nombre',nombre);
+    sessionStorage.setItem('apellido',apellido);
+    sessionStorage.setItem('numDni',numDni);
+    sessionStorage.setItem('nacimiento',nacimiento);
+    sessionStorage.setItem('celular',celular);
+    sessionStorage.setItem('correo',correo);
+    sessionStorage.setItem('contrasena',contrasena);
+    sessionStorage.setItem('contrasenaConfirmar',contrasenaConfirmar);
+    sessionStorage.setItem('sesion',false);
+
+    console.log(sessionStorage);
 }

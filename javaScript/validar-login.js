@@ -61,5 +61,8 @@ function validar() {
         return false;
     }else{
         document.getElementById('mensajeContrasena').innerHTML = "";
+        sessionStorage.setItem('sesion',true);
+        console.log(sessionStorage);
+        alert(sessionStorage);
     }
 }

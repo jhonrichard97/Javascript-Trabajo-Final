@@ -2,13 +2,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Registro Usuario</title>
+    <title>Editar Usuario</title>
     <!-- ICONO PAGINA WEB -->
     <link rel="shortcut icon" href="../images/iconoPsg.ico">
     <!-- REFERENCIA ESTILOS -->
     <link rel="stylesheet" href="../style/registroStyle.css">
     <link rel="stylesheet" href="../style/indexStyle.css">
     <link rel="stylesheet" href="../style/loginExito.css">
+    <link rel="stylesheet" href="../style/editarPerfil.css">
+
     <script src="../javaScript/validar-registro.js"></script>
 </head>
 
@@ -62,12 +64,56 @@
         </div>
     </div>
 
-    <div id="tituloLoginExitoso">
-        <h1>Bienvenido estimado usuario</h1>
+    <!--<div id="tituloLoginExitoso">
+        <h1>Editar perfil de usuario</h1>
+        <div id="cajaForm">
+
+        </div>
+    </div>-->
+
+     <!-- CONTENEDOR REGISTRO USUARIO -->
+     <div id="contentRegistro">
         <div>
-            <p>Favor dirigirte a la Pagina Principal para agregar tus productos al carrito</p>
-            <br>
-            <a href="../index.html">Ir a Pagina Principal</a>
+            <h1>Editar perfil de usuario</h1>
+        </div>
+        <div id="formularioRegistro">
+            <!-- FORMULARIO -->
+            <form action="registroExitoso.html" id="registroForm" onsubmit="return validar()">
+                <label for="">Nombre (como aparece en tu DNI)</label>
+                <input type="text" placeholder="Ingresa tu nombre" id="nombre" disabled>
+                <div id="textoNombre"></div>
+                <label for="">Apellido (como aparece en tu DNI)</label>
+                <input type="text" placeholder="Ingresa tu apellido" id="apellido" disabled>
+                <div id="textoApellido"></div>
+                <label for="">N° de DNI</label>
+                <input type="number" placeholder="Ingresa el numero de documento" id="dni" disabled>
+                <div id="textoDni"></div>
+                <label for="">Fecha de nacimiento</label>
+                <input type="date" name="" id="nacimiento" disabled>
+                <div id="textoNacimiento"></div>
+                <label for="">Celular</label>
+                <input type="number" placeholder="Ingresa tu numero de celular" id="celular">
+                <div id="textoCelular"></div>
+                <label for="">Correo Electrónico</label>
+                <input type="text" placeholder="Ingresa tu correo : ejemplo@gmail.com" id="correo">
+                <div id="textoCorreo"></div>
+                <label for="">Contraseña anterior</label>
+                <input type="password" placeholder="Ingresa la contraseña actual" id="contrasena">
+                <div id="textoContrasena"></div>
+                <label for="">Nueva contraseña</label>
+                <input type="password" placeholder="Confirmar la nueva contraseña" id="contrasenaConfirmar">
+                <div id="textoContrasenaConfirmar"></div>
+                <br>
+                <input type="checkbox" name="" id="check1" checked>
+                <label for="">Autorizo recibir comunicaciones promocionales y autorizo el uso de mi información para
+                    fines adicionales.</label>
+                <div id="textoCheck1"></div>
+                <input type="checkbox" name="" id="check2" checked>
+                <label for="">Declaro que he leído y acepto la nueva Política de Privacidad y los Términos y Condiciones
+                    de PSG Store.</label>
+                <div id="textoCheck2"></div>
+                <input type="submit" id="enviar" value="Actualizar datos">
+            </form>
         </div>
     </div>
 
@@ -136,6 +182,6 @@
     </div>
 
 </body>
-<script src="../javaScript/loginExitoso.js"></script>
+<script src="../javaScript/editarPerfil.js"></script>
 
 </html>

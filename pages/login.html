@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesion</title>
+    <!-- ICONO PAGINA WEB -->
+    <link rel="shortcut icon" href="../images/iconoPsg.ico">
+    <!-- REFERENCIA ESTILOS -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+    <link rel="stylesheet" href="../style/indexStyle.css">
+    <link rel="stylesheet" href="../bootStrap/css/bootstrap.css">
+    <script src="../bootStrap/js/bootstrap.js"></script>
+    <script src="../javaScript/code.js"></script>
+    <script src="../javaScript/validar-login.js"></script>
+    <script src="../javaScript/usuario.js"></script>
+    <link href="../bootStrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../style/loginStyle.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- CONTACTANOS EN WHATSAPP -->
+    <a id="contactoWSP" href="https://api.whatsapp.com/send?phone=51952401130s" target="_blank">
+        <img src="../images/whatsapp.png">
+    </a>
+
+    <!-- CABEZERA DE PAGINA -->
+    <div id="cabecera">
+        <div id="cabecera-option">
+            <ul>
+                <a href="../index.html">
+                    <li>Pagina Principal</li>
+                </a>
+                <a href="registro.html">
+                    <li>Registrate</li>
+                </a>
+                <a href="https://billetterie.psg.fr/en/?utm_source=store.psg.fr&utm_medium=referral&utm_campaign=Store_PSG"
+                    target="_blank">
+                    <li>Entradas</li>
+                </a>
+                <a href="https://es.experience.psg.fr/?utm_source=Store&utm_medium=Store_header&utm_campaign=Store_header_StadiumTour"
+                    target="_blank">
+                    <li>Stadium Tour</li>
+                </a>
+                <a href="https://store3.psg.fr/track-order" target="_blank">
+                    <li>Localizador de envíos</li>
+                </a>
+                <a href="https://store3.psg.fr/customer-help-desk" target="_blank">
+                    <li>Ayuda</li>
+                </a>
+                <a href="login.html">
+                    <li>Inicia sesión</li>
+                </a>
+            </ul>
+        </div>
+        <!-- BUSCADOR Y LOGO DE PAGINA -->
+        <div id="buscador">
+            <div>
+                <a href="../index.html">
+                    <img src="../images/logoPsg.png" alt="">
+                </a>
+            </div>
+            <div>
+                <form id="formBuscador">
+                    <input type="text" placeholder="Buscar">
+                    <button formaction="../index.html">Buscar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tituloLogin">
+        <h1>Inicia sesión</h1>
+    </div>
+    <!-- CONTENEDOR LOGIN USUARIO action="loginExitoso.html"-->
+    <form class="form-signin" action="loginExitoso.html" onsubmit="return validar()">
+        <!-- <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+            height="72">-->
+
+        <label for="inputEmail" class="sr-only">Correo electronico</label>
+        <input type="text" id="inputEmail" class="form-control" placeholder="Ingrese correo electronico">
+        <div id="mensajeEmail"></div>
+        <br>
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Ingrese contraseña">
+        <div id="mensajeContrasena"></div>
+        <div class="checkbox mb-3">
+            <br>
+            <label>
+                <input type="checkbox" value="remember-me"> Recordar contraseña
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+        <!-- <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ingresar">-->
+    </form>
+    <br>
+
+    <!-- PIE DE PAGINA -->
+    <div id="footer">
+        <!-- ATENCION AL CLIENTES -->
+        <div id="atencionCliente">
+            <h5>Atención al cliente</h5>
+            <ul>
+                <li><a href="https://api.whatsapp.com/send?phone=51952401130" target="_blank">Atención por Whatsapp</a>
+                </li>
+                <li><a href="https://store3.psg.fr/customer-help-desk" target="_blank">Ayuda</a></li>
+                <li><a href="https://store3.psg.fr/es/tracking-information/ch-1368" target="_blank">Localizador de
+                        envíos</a></li>
+                <li><a href="https://store3.psg.fr/es/sizing-guidelines/ch-1365" target="_blank">Guía de tallas</a>
+                </li>
+                <li><a href="https://google.com.pe" target="_blank">Libro de reclamaciones</a></li>
+            </ul>
+        </div>
+        <!-- REDES SOCIALES DE PAGINA -->
+        <div id="redesSociales">
+            <h5>Nuestras Redes Sociales</h5>
+            <ul>
+                <li><a href="https://www.facebook.com/PSG/" target="_blank">Facebook</a></li>
+                <li><a href="https://twitter.com/PSG_inside" target="_blank">Twitter</a></li>
+                <li><a href="https://www.instagram.com/psg/" target="_blank">Instagram</a></li>
+                <li><a href="https://www.youtube.com/user/PSGofficiel" target="_blank">Youtube</a></li>
+                <li><a href="https://www.tiktok.com/@psg" target="_blank">TikTok</a></li>
+                <li><a href="https://www.snapchat.com/add/psg" target="_blank">Snapchat</a></li>
+                <li><a href="https://www.twitch.tv/psg?lang=es" target="_blank">Twitch</a></li>
+            </ul>
+        </div>
+        <!-- REGISTRO EN FOOTER -->
+        <div id="footerRegistro">
+            <p>Mantente informado acerca de ofertas, nuevos productos y más</p>
+            <button><a href="registro.html">REGÍSTRATE Y AHORRA UN 10%</a></button>
+        </div>
+    </div>
+    <!-- DERECHOS PAGINA -->
+    <div id="derechos">
+        <p>Copyright © Design by URBANO | 2023</p>
+    </div>
+
+</body>
+
+</html>

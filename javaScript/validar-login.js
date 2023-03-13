@@ -56,7 +56,7 @@ function validar() {
     }
 
     if(obtenerCookie(usuario)==false){
-        document.getElementById('mensajeContrasena').innerHTML = "Usurio y/o contraseña incorrecto";
+        document.getElementById('mensajeContrasena').innerHTML = "Usuario y/o contraseña incorrecto";
         document.getElementById('mensajeContrasena').style.color = "red";
         return false;
     }else{

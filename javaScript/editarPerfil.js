@@ -73,6 +73,10 @@ function validar() {
     let contrasenaAnterior = document.getElementById('contrasenaAnterior').value;
     let contrasenaNueva = document.getElementById('contrasenaNueva').value;
 
+    let cambioContra=false;
+    let cambioCelular=false;
+    let cambioCorreo=false;
+
     //VALIDAR NUMERO CELULAR 
     var ExpRegCel = "^[0-9]+$";
     if (celular == null || celular.length == 0) {
@@ -93,6 +97,7 @@ function validar() {
     } else {
         document.getElementById('textoCelular').innerHTML = "";
         sessionStorage.setItem('celular', celular);
+        cambioCelular=true;
     }
 
     //VALIDAR CORREO ELECTRONICO
@@ -110,6 +115,7 @@ function validar() {
     } else {
         document.getElementById('textoCorreo').innerHTML = "";
         sessionStorage.setItem('correo', correo);
+        cambioCorreo=true;
     }
 
     //VALIDAR LA CONTRASEÑA ANTERIOR
@@ -175,26 +181,7 @@ function validar() {
             document.getElementById('textoContrasenaConfirmar').innerHTML = "";
             sessionStorage.setItem('contrasena', contrasenaNueva);
             sessionStorage.setItem('contrasenaConfirmar', contrasenaNueva);
+            cambioContra=true;
         }
-        //VALIDAR CONTRASEÑA NUEVA
-        var ExpRegContrasena = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
-
-        if (contrasenaNueva.match(ExpRegContrasena) == null) {
-            document.getElementById('textoContrasenaConfirmar').innerHTML = "La contraseña debe contener :";
-            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra minuscula";
-            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra mayuscula";
-            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un numero";
-            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un caracter especial";
-            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Minimo 8 digitos";
-            document.getElementById('textoContrasenaConfirmar').style.color = "red";
-            location.href = "#correo";
-            return false;
-        } else {
-            document.getElementById('textoContrasenaConfirmar').innerHTML = "";
-            sessionStorage.setItem('contrasena', contrasenaNueva);
-            sessionStorage.setItem('contrasenaConfirmar', contrasenaNueva);
-        }
-
     }
-
 }

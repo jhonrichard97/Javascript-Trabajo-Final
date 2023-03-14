@@ -51,12 +51,23 @@ celular.value = sessionStorage.getItem('celular');
 let correo = document.getElementById('correo');
 correo.value = sessionStorage.getItem('correo');
 
+//DESABILITAMOS LOS INPUT QUE NO SE PODRA ACTUALIZAR
+
+$(document).ready(function () {
+    $("#nombre").attr('disabled', 'disabled');
+    $("#apellido").attr('disabled', 'disabled');
+    $("#dni").attr('disabled', 'disabled');
+    $("#nacimiento").attr('disabled', 'disabled');
+    $("#check1").attr('disabled', 'disabled');
+    $("#check2").attr('disabled', 'disabled');
+});
+
 function validar() {
-    
-    let nombre = document.getElementById('nombre').value;
+
+    /*let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
     let numDni = document.getElementById('dni').value;
-    let nacimiento = document.getElementById('nacimiento').value;
+    let nacimiento = document.getElementById('nacimiento').value;*/
     let celular = document.getElementById('celular').value;
     let correo = document.getElementById('correo').value;
     let contrasenaAnterior = document.getElementById('contrasenaAnterior').value;
@@ -81,7 +92,7 @@ function validar() {
         return false;
     } else {
         document.getElementById('textoCelular').innerHTML = "";
-        sessionStorage.setItem('celular',celular);
+        sessionStorage.setItem('celular', celular);
     }
 
     //VALIDAR CORREO ELECTRONICO
@@ -98,46 +109,92 @@ function validar() {
         return false;
     } else {
         document.getElementById('textoCorreo').innerHTML = "";
-        sessionStorage.setItem('correo',correo);
+        sessionStorage.setItem('correo', correo);
     }
 
     //VALIDAR LA CONTRASEÑA ANTERIOR
-    let contraActual=sessionStorage.getItem('contrasena');
-    if(contrasenaAnterior==null || contrasenaAnterior.length==0){
+    let contraActual = sessionStorage.getItem('contrasena');
+    /*if (contrasenaAnterior == null || contrasenaAnterior.length == 0) {
         document.getElementById('textoContrasena').innerHTML = "Ingresar contraseña anterior(obligatorio) no debe estar vacio";
         document.getElementById('textoContrasena').style.color = "red";
         location.href = "#contrasenaAnterior";
         return false;
-    }else if(contrasenaAnterior!=contraActual){
-        document.getElementById('textoContrasena').innerHTML = "Contraseña no coincide";
+    } else*/
+
+    if ((contrasenaAnterior == null || contrasenaAnterior.length == 0) && (contrasenaNueva == null || contrasenaNueva.length == 0)) {
+        document.getElementById('textoContrasena').innerHTML = "";
+        alert('ejecuto el primer if');
+    } else if ((contrasenaAnterior != null || contrasenaAnterior.length != 0) && (contrasenaNueva == null || contrasenaNueva.length == 0)) {
+
+        document.getElementById('textoContrasenaConfirmar').innerHTML = "Ingrese nueva contraseña ga";
+        document.getElementById('textoContrasenaConfirmar').style.color = "red";
+        location.href = "#textoContrasenaConfirmar";
+
+        //VALIDAR CONTRASEÑA ANTERIOR SI COINCIDE
+        if (contrasenaAnterior != contraActual) {
+            document.getElementById('textoContrasena').innerHTML = "Contraseña no coincide s";
+            document.getElementById('textoContrasena').style.color = "red";
+            location.href = "#contrasenaAnterior";
+            return false;
+        } else {
+            document.getElementById('textoContrasena').innerHTML = "";
+        }
+
+        return false;
+
+    } else if ((contrasenaAnterior == null || contrasenaAnterior.length == 0) && (contrasenaNueva != null || contrasenaNueva.length != 0)) {
+        document.getElementById('textoContrasena').innerHTML = "Ingrese contraseña anterior 2";
         document.getElementById('textoContrasena').style.color = "red";
         location.href = "#contrasenaAnterior";
         return false;
-    }else{
-        document.getElementById('textoContrasena').innerHTML = "";
-    }
-    
-    //VALIDAR CONTRASEÑA NUEVA
-    var ExpRegContrasena = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
+    } else if ((contrasenaAnterior != null || contrasenaAnterior.length != 0) && (contrasenaNueva != null || contrasenaNueva.length != 0)) {
 
-    if (contrasenaNueva == null || contrasenaNueva.length == 0) {
-        document.getElementById('textoContrasenaConfirmar').innerHTML = "Ingresar contraseña (obligatorio)";
-        document.getElementById('textoContrasenaConfirmar').style.color = "red";
-        location.href = "#correo";
-        return false;
-    } else if (contrasenaNueva.match(ExpRegContrasena) == null) {
-        document.getElementById('textoContrasenaConfirmar').innerHTML = "La contraseña debe contener :";
-        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra minuscula";
-        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra mayuscula";
-        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un numero";
-        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un caracter especial";
-        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Minimo 8 digitos";
-        document.getElementById('textoContrasenaConfirmar').style.color = "red";
-        location.href = "#correo";
-        return false;
-    } else {
-        document.getElementById('textoContrasenaConfirmar').innerHTML = "";
-        sessionStorage.setItem('contrasena',contrasenaNueva);
-        sessionStorage.setItem('contrasenaConfirmar',contrasenaNueva);
+        //VALIDAR CONTRASEÑA ANTERIOR SI COINCIDE
+        if (contrasenaAnterior != contraActual) {
+            document.getElementById('textoContrasena').innerHTML = "Contraseña no coincide s";
+            document.getElementById('textoContrasena').style.color = "red";
+            location.href = "#contrasenaAnterior";
+            return false;
+        } else {
+            document.getElementById('textoContrasena').innerHTML = "";
+        }
+        //VALIDAR CONTRASEÑA NUEVA
+        var ExpRegContrasena = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
+
+        if (contrasenaNueva.match(ExpRegContrasena) == null) {
+            document.getElementById('textoContrasenaConfirmar').innerHTML = "La contraseña debe contener :";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra minuscula";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra mayuscula";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un numero";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un caracter especial";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Minimo 8 digitos";
+            document.getElementById('textoContrasenaConfirmar').style.color = "red";
+            location.href = "#correo";
+            return false;
+        } else {
+            document.getElementById('textoContrasenaConfirmar').innerHTML = "";
+            sessionStorage.setItem('contrasena', contrasenaNueva);
+            sessionStorage.setItem('contrasenaConfirmar', contrasenaNueva);
+        }
+        //VALIDAR CONTRASEÑA NUEVA
+        var ExpRegContrasena = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
+
+        if (contrasenaNueva.match(ExpRegContrasena) == null) {
+            document.getElementById('textoContrasenaConfirmar').innerHTML = "La contraseña debe contener :";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra minuscula";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra mayuscula";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un numero";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un caracter especial";
+            document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Minimo 8 digitos";
+            document.getElementById('textoContrasenaConfirmar').style.color = "red";
+            location.href = "#correo";
+            return false;
+        } else {
+            document.getElementById('textoContrasenaConfirmar').innerHTML = "";
+            sessionStorage.setItem('contrasena', contrasenaNueva);
+            sessionStorage.setItem('contrasenaConfirmar', contrasenaNueva);
+        }
+
     }
+
 }

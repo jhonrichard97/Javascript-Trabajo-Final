@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../style/editarPerfil.css">
 
     <script src="../javaScript/validar-registro.js"></script>
+    <script src="../javaScript/jquery-3.6.3.min.js"></script>
 </head>
 
 <body onload="validarUser()">
@@ -80,16 +81,16 @@
             <!-- FORMULARIO -->
             <form action="registroExitoso.html" id="registroForm" onsubmit="return validar()">
                 <label for="">Nombre (como aparece en tu DNI)</label>
-                <input type="text" placeholder="Ingresa tu nombre" id="nombre" disabled>
+                <input type="text" placeholder="Ingresa tu nombre" id="nombre">
                 <div id="textoNombre"></div>
                 <label for="">Apellido (como aparece en tu DNI)</label>
-                <input type="text" placeholder="Ingresa tu apellido" id="apellido" disabled>
+                <input type="text" placeholder="Ingresa tu apellido" id="apellido">
                 <div id="textoApellido"></div>
                 <label for="">N° de DNI</label>
-                <input type="number" placeholder="Ingresa el numero de documento" id="dni" disabled>
+                <input type="number" placeholder="Ingresa el numero de documento" id="dni">
                 <div id="textoDni"></div>
                 <label for="">Fecha de nacimiento</label>
-                <input type="date" name="" id="nacimiento" disabled>
+                <input type="date" name="" id="nacimiento">
                 <div id="textoNacimiento"></div>
                 <label for="">Celular</label>
                 <input type="number" placeholder="Ingresa tu numero de celular" id="celular">

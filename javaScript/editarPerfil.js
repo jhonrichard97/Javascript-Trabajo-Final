@@ -10,14 +10,14 @@ function validarUser() {
 
 let botonUser = document.getElementById('user');
 
-botonUser.addEventListener('click',editarPerfil);
+botonUser.addEventListener('click', editarPerfil);
 
-function editarPerfil(){
+function editarPerfil() {
     let estado = sessionStorage.getItem('sesion');
-    if(estado=='true'){
-        window.location.href="editarPerfil.html";
-    }else{
-        window.location.href="login.html";
+    if (estado == 'true') {
+        window.location.href = "editarPerfil.html";
+    } else {
+        window.location.href = "login.html";
     }
 }
 /*
@@ -33,20 +33,111 @@ texto =texto +'<input type="email" value="'+sessionStorage.getItem('correo')+'"d
 
 ga.innerHTML=texto;*/
 
-let nombre=document.getElementById('nombre');
-nombre.value=sessionStorage.getItem('nombre');
+let nombre = document.getElementById('nombre');
+nombre.value = sessionStorage.getItem('nombre');
 
-let apellido=document.getElementById('apellido');
-apellido.value=sessionStorage.getItem('apellido');
+let apellido = document.getElementById('apellido');
+apellido.value = sessionStorage.getItem('apellido');
 
-let numDni=document.getElementById('dni');
-numDni.value=sessionStorage.getItem('numDni');
+let numDni = document.getElementById('dni');
+numDni.value = sessionStorage.getItem('numDni');
 
-let nacimiento=document.getElementById('nacimiento');
-nacimiento.value=sessionStorage.getItem('nacimiento');
+let nacimiento = document.getElementById('nacimiento');
+nacimiento.value = sessionStorage.getItem('nacimiento');
 
-let celular=document.getElementById('celular');
-celular.value=sessionStorage.getItem('celular');
+let celular = document.getElementById('celular');
+celular.value = sessionStorage.getItem('celular');
 
-let correo=document.getElementById('correo');
-correo.value=sessionStorage.getItem('correo');
+let correo = document.getElementById('correo');
+correo.value = sessionStorage.getItem('correo');
+
+function validar() {
+    
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
+    let numDni = document.getElementById('dni').value;
+    let nacimiento = document.getElementById('nacimiento').value;
+    let celular = document.getElementById('celular').value;
+    let correo = document.getElementById('correo').value;
+    let contrasenaAnterior = document.getElementById('contrasenaAnterior').value;
+    let contrasenaNueva = document.getElementById('contrasenaNueva').value;
+
+    //VALIDAR NUMERO CELULAR 
+    var ExpRegCel = "^[0-9]+$";
+    if (celular == null || celular.length == 0) {
+        document.getElementById('textoCelular').innerHTML = "Ingresar celular (obligatorio)";
+        document.getElementById('textoCelular').style.color = "red";
+        location.href = "#celular";
+        return false;
+    } else if (celular.match(ExpRegCel) == null) {
+        document.getElementById('textoCelular').innerHTML = "Ingresar celular valido (solo numeros)";
+        document.getElementById('textoCelular').style.color = "red";
+        location.href = "#celular";
+        return false;
+    } else if (celular.length != 9) {
+        document.getElementById('textoCelular').innerHTML = "Ingresar celular valido (9 digitos)";
+        document.getElementById('textoCelular').style.color = "red";
+        location.href = "#celular";
+        return false;
+    } else {
+        document.getElementById('textoCelular').innerHTML = "";
+        sessionStorage.setItem('celular',celular);
+    }
+
+    //VALIDAR CORREO ELECTRONICO
+    var ExpRegCorreo = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    if (correo == null || correo.length == 0) {
+        document.getElementById('textoCorreo').innerHTML = "Ingresar correo (obligatorio)";
+        document.getElementById('textoCorreo').style.color = "red";
+        location.href = "#correo";
+        return false;
+    } else if (correo.match(ExpRegCorreo) == null) {
+        document.getElementById('textoCorreo').innerHTML = "Ingresar correo valido";
+        document.getElementById('textoCorreo').style.color = "red";
+        location.href = "#correo";
+        return false;
+    } else {
+        document.getElementById('textoCorreo').innerHTML = "";
+        sessionStorage.setItem('correo',correo);
+    }
+
+    //VALIDAR LA CONTRASEÑA ANTERIOR
+    let contraActual=sessionStorage.getItem('contrasena');
+    if(contrasenaAnterior==null || contrasenaAnterior.length==0){
+        document.getElementById('textoContrasena').innerHTML = "Ingresar contraseña anterior(obligatorio) no debe estar vacio";
+        document.getElementById('textoContrasena').style.color = "red";
+        location.href = "#contrasenaAnterior";
+        return false;
+    }else if(contrasenaAnterior!=contraActual){
+        document.getElementById('textoContrasena').innerHTML = "Contraseña no coincide";
+        document.getElementById('textoContrasena').style.color = "red";
+        location.href = "#contrasenaAnterior";
+        return false;
+    }else{
+        document.getElementById('textoContrasena').innerHTML = "";
+    }
+    
+    //VALIDAR CONTRASEÑA NUEVA
+    var ExpRegContrasena = /(?=(.*[0-9]))(?=.*[\!@#$%^&*()\\[\]{}\-_+=|:;"'<>,./?])(?=.*[a-z])(?=(.*[A-Z]))(?=(.*)).{8,}/;
+
+    if (contrasenaNueva == null || contrasenaNueva.length == 0) {
+        document.getElementById('textoContrasenaConfirmar').innerHTML = "Ingresar contraseña (obligatorio)";
+        document.getElementById('textoContrasenaConfirmar').style.color = "red";
+        location.href = "#correo";
+        return false;
+    } else if (contrasenaNueva.match(ExpRegContrasena) == null) {
+        document.getElementById('textoContrasenaConfirmar').innerHTML = "La contraseña debe contener :";
+        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra minuscula";
+        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Una letra mayuscula";
+        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un numero";
+        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Un caracter especial";
+        document.getElementById('textoContrasenaConfirmar').innerHTML += "<br>Minimo 8 digitos";
+        document.getElementById('textoContrasenaConfirmar').style.color = "red";
+        location.href = "#correo";
+        return false;
+    } else {
+        document.getElementById('textoContrasenaConfirmar').innerHTML = "";
+        sessionStorage.setItem('contrasena',contrasenaNueva);
+        sessionStorage.setItem('contrasenaConfirmar',contrasenaNueva);
+    }
+}

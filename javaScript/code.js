@@ -69,8 +69,12 @@ function myFunctionCookie() {
 let comprar=document.getElementById('btnComprar');
 
 comprar.addEventListener('click',function(){
-    eliminarCookieCompra();
-    alert("COMPRA EXITOSA");
+    if(sessionStorage.getItem('sesion')==null || sessionStorage.getItem('sesion')==false){
+        alert('FAVOR INICIAR SESION PARA PROCEDER CON LA COMPRA');
+    }else{
+        alert('COMPRA EXITOSA, GRACIAS POR SU PREFERENCIA');
+        eliminarCookieCompra();
+    }
 });
 
 function eliminarCookieCompra() {

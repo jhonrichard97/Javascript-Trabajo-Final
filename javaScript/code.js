@@ -14,6 +14,15 @@ function primeraFuncion() {
             document.getElementById('user').innerHTML = 'HOLA, ' + nombre + " " + apellido;
         }
     }
+    let btnCarrito=document.getElementById('btnCarrito');
+
+    let hayCookie=document.cookie.split(';').length;
+    
+    if(hayCookie==1){
+        btnCarrito.innerHTML='<img src="images/car.png" alt="" height="100px"></img>';
+    }else if(hayCookie>1){
+        btnCarrito.innerHTML='<img src="images/carComplete.png" alt="" height="100px"></img>';
+    }
 }
 
 //BUSCADOR DE PRODUCTOS CON JQUERY
@@ -71,3 +80,13 @@ function eliminarCookieCompra() {
     }
     document.cookie = "contador=1";
   }
+
+let btnCarrito=document.getElementById('btnCarrito');
+
+let hayCookie=document.cookie.split(';').length;
+
+if(hayCookie==1){
+    btnCarrito.innerHTML='<img src="images/car.png" alt=""></img>';
+}else if(hayCookie>1){
+    btnCarrito.innerHTML='<img src="images/carComplete.png" alt=""></img>';
+}

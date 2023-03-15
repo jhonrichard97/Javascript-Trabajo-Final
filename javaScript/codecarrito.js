@@ -37,6 +37,7 @@ function addCart(objeto) {
     posicionCookie = 1;
     document.cookie = "cookieProducto" + posicionCookie + "=" + JSON.stringify(varObject);
     document.cookie = "contador=2";
+    window.location.reload();
   }
 }
 

@@ -2,7 +2,7 @@
 var nombreProducto;
 var precioAntesProducto;
 var precioAhoraProducto;
-
+var cantidadProducto;
 
 //FUNCION PARA CREAR UNA COOKIE
 function addCart(objeto) {
@@ -51,9 +51,11 @@ function actualizarLista() {
   for(var i=1;i<posicionCookie;i++){
     obtenerCookie("cookieProducto"+i);
     texto = texto + "<div class='productoListaCarrito'>";
+    texto = texto + '<button type="button" class="btn-close deleteCookie" data-bs-dismiss="modal" aria-label="Close"></button>';
     texto = texto + "<h5 class='tituloProducto'>" + nombreProducto + "</h5>";
     texto = texto + "<p class='precioAntes'>" + precioAntesProducto + "</p>";
     texto = texto + "<p class='precioAhora'>" + precioAhoraProducto + "</p>";
+    texto = texto + "<p class='cantidadProducto'>Cantidad : " + cantidadProducto + "</p>";
     texto = texto + "</div>";
   }
   lista.innerHTML = texto;
@@ -75,4 +77,13 @@ function obtenerCookie(name) {
   nombreProducto = varProducto[0].slice(5);
   precioAntesProducto = varProducto[1].slice(6);
   precioAhoraProducto = varProducto[2].slice(4);
+}
+
+var items = document.getElementsByClassName('deleteCookie');
+for (var i = 0; i < items.length; i++) {
+  items[i].addEventListener('click', printDetails);
+}
+
+function printDetails(e) {
+  console.log("Clicked " + this.id);
 }

@@ -58,7 +58,6 @@ function actualizarLista() {
       texto = texto + "<h5 class='tituloProducto'>" + nombreProducto + "</h5>";
       texto = texto + "<p class='precioAntes'>" + precioAntesProducto + "</p>";
       texto = texto + "<p class='precioAhora'>" + precioAhoraProducto + "</p>";
-      texto = texto + "<p class='cantidadProducto'>Cantidad : " + cantidadProducto + "</p>";
       texto = texto + "</div>";
     }
   }

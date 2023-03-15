@@ -56,3 +56,18 @@ function myFunctionCookie() {
         x.style.display = "none";
     }
 }
+
+let comprar=document.getElementById('btnComprar');
+
+comprar.addEventListener('click',function(){
+    eliminarCookieCompra();
+    alert("COMPRA EXITOSA");
+});
+
+function eliminarCookieCompra() {
+    console.log("Compra exitosa se vacia el carrito");
+    for(var i=0;i<20;i++){
+        document.cookie = "cookieProducto"+i+"=; max-age=0";
+    }
+    document.cookie = "contador=1";
+  }

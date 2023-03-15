@@ -5,12 +5,14 @@ function primeraFuncion() {
     /*const modalEntrada2 = new bootstrap.Modal("#galleta");
     modalEntrada2.show();*/
 
-    let estado = sessionStorage.getItem('sesion');
-    let nombre = sessionStorage.getItem('nombre').toUpperCase();
-    let apellido = sessionStorage.getItem('apellido').toUpperCase();
-
-    if (estado == 'true') {
-        document.getElementById('user').innerHTML = 'HOLA, ' + nombre + " " + apellido;
+    if(sessionStorage.getItem('sesion')!=null){
+        let estado = sessionStorage.getItem('sesion');
+        let nombre = sessionStorage.getItem('nombre').toUpperCase();
+        let apellido = sessionStorage.getItem('apellido').toUpperCase();
+    
+        if (estado == 'true') {
+            document.getElementById('user').innerHTML = 'HOLA, ' + nombre + " " + apellido;
+        }
     }
 }
 

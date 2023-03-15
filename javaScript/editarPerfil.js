@@ -5,6 +5,7 @@ function validarUser() {
 
     if (estado == 'true') {
         document.getElementById('user').innerHTML = 'HOLA, ' + nombre + " " + apellido;
+        document.getElementById('titleUser').innerHTML='Editar perfil de usuario '+nombre+" "+apellido;
     }
 }
 

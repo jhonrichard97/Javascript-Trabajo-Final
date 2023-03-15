@@ -44,7 +44,7 @@ function validar() {
         }
         varUser = cookie[name].replace('}', '').replace("{", "").replace(/['"]+/g, '');
         varUser = varUser.split(",");
-        console.log(varUser);
+        
         //GUARDO LOS VALORES
         correoCookie = varUser[1].slice(7);
         contraCookie = varUser[2].slice(11);
@@ -62,7 +62,5 @@ function validar() {
     }else{
         document.getElementById('mensajeContrasena').innerHTML = "";
         sessionStorage.setItem('sesion',true);
-        console.log(sessionStorage);
-        alert(sessionStorage);
     }
 }

@@ -5,6 +5,7 @@ function validarUser() {
 
     if (estado == 'true') {
         document.getElementById('user').innerHTML = 'HOLA, ' + nombre + " " + apellido;
+        document.getElementById('titleUser').innerHTML='Bienvenido estimado usuario '+nombre+" "+apellido;
     }
 }
 

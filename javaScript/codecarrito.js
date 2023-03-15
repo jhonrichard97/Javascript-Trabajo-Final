@@ -47,18 +47,25 @@ function actualizarLista() {
 
   let cookieLeer = document.cookie;
   let posicionCookie = parseInt(cookieLeer.slice(cookieLeer.search("contador") + 9));
+
+  let position=parseInt(document.cookie.split(';').length);
   //BUCLE PARA RECORRER LOS PRODUCTOS COOKIE SEGUN EL CONTADOR
-  for(var i=1;i<posicionCookie;i++){
-    obtenerCookie("cookieProducto"+i);
-    texto = texto + "<div class='productoListaCarrito'>";
-    texto = texto + '<button type="button" class="btn-close deleteCookie" data-bs-dismiss="modal" aria-label="Close"></button>';
-    texto = texto + "<h5 class='tituloProducto'>" + nombreProducto + "</h5>";
-    texto = texto + "<p class='precioAntes'>" + precioAntesProducto + "</p>";
-    texto = texto + "<p class='precioAhora'>" + precioAhoraProducto + "</p>";
-    texto = texto + "<p class='cantidadProducto'>Cantidad : " + cantidadProducto + "</p>";
-    texto = texto + "</div>";
+  for (var i = 1; i <= position+20; i++) {
+    if (verificar(i)==true) {
+      obtenerCookie("cookieProducto" + i);
+      texto = texto + '<div class="productoListaCarrito">';
+      texto = texto + '<button type="button" class="btn-close deleteCookie" onclick="eliminarCookie(this)" data-bs-dismiss="modal" aria-label="Close" id="cookieProducto' + i + '"></button>';
+      texto = texto + "<h5 class='tituloProducto'>" + nombreProducto + "</h5>";
+      texto = texto + "<p class='precioAntes'>" + precioAntesProducto + "</p>";
+      texto = texto + "<p class='precioAhora'>" + precioAhoraProducto + "</p>";
+      texto = texto + "<p class='cantidadProducto'>Cantidad : " + cantidadProducto + "</p>";
+      texto = texto + "</div>";
+    }
   }
   lista.innerHTML = texto;
+}
+function verificar(e){
+  return document.cookie.includes('cookieProducto'+e);
 }
 
 //FUNCION PARA OBTENER UNA COOKIE
@@ -79,11 +86,11 @@ function obtenerCookie(name) {
   precioAhoraProducto = varProducto[2].slice(4);
 }
 
-var items = document.getElementsByClassName('deleteCookie');
-for (var i = 0; i < items.length; i++) {
-  items[i].addEventListener('click', printDetails);
-}
-
-function printDetails(e) {
-  console.log("Clicked " + this.id);
+function eliminarCookie(object) {
+  let id = object.id;
+  document.cookie = id + "=; max-age=0";
+  console.log("se borro " + id);
+  let valorConta = document.cookie.split(';').length;
+  valorConta--;
+  document.cookie = "contador=" + valorConta;
 }
